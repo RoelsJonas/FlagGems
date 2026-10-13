@@ -34,6 +34,10 @@ else:
         (1, 1, 32),
         (15, 160, 1024),
         (495, 5333, 71),
+        # M is not a multiple of the tall tile heights the specialized GEMM
+        # kernels are tuned with, so this covers the partial edge tile of every
+        # matrix in the batch.
+        (160, 160, 64),
     ]
     FLOAT_DTYPES = utils.FLOAT_DTYPES
 
