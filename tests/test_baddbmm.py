@@ -31,6 +31,11 @@ else:
         (1, 1, 32),
         (15, 160, 1024),
         (495, 5333, 71),
+        # Large enough to reach the warp-specialized fused SQMMA kernel: every
+        # dimension clears the launch thresholds, the vector-bias tests exercise
+        # the wide ring and the backward tests, which pass a full 3-D bias,
+        # exercise the narrower one.
+        (1024, 1024, 1024),
     ]
     FLOAT_DTYPES = ORIG_FLOAT_DTYPES
 
